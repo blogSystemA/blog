@@ -79,7 +79,7 @@
 	
 	
 	
-	<bean id="multipleDataSource" class="com.cardniu.fundhouse.util.MultipleDataSource">
+	<bean id="multipleDataSource" class="cn.jxust.blog.util.MultipleDataSource">
         <property name="defaultTargetDataSource" ref="adminDataSource"/>
         <property name="targetDataSources">
             <map>
