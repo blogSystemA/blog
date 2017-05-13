@@ -1,4 +1,4 @@
-package cn.jxust.redis;
+package cn.jxust.blog.redis;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

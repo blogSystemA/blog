@@ -103,7 +103,7 @@
     
  
 
-	<bean id="jedisTemplate" class="cn.jxust.redis.JedisTemplate">
+	<bean id="jedisTemplate" class="cn.jxust.blog.redis.JedisTemplate">
 		<constructor-arg index="0" ref="sentinelJedisPool" />
 	</bean>
 

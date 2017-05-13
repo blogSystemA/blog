@@ -1,4 +1,4 @@
-package cn.jxust.redis;
+package cn.jxust.blog.redis;
 
 /**
  * Redis分组定义

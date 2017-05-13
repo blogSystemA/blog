@@ -3,7 +3,7 @@
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  *******************************************************************************/
-package cn.jxust.redis;
+package cn.jxust.blog.redis;
 
 import java.util.ArrayList;
 import java.util.Collection;
