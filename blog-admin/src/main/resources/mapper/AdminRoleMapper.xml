@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jxust.blog.mapper.AdminRoleMapper" >
+  <resultMap id="BaseResultMap" type="cn.jxust.blog.po.AdminRoleKey" >
+    <id column="AdminId" property="AdminId" jdbcType="INTEGER" />
+    <id column="roleId" property="roleId" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="cn.jxust.blog.po.AdminRoleKey" >
+    delete from Admin_role
+    where AdminId = #{AdminId,jdbcType=INTEGER}
+      and roleId = #{roleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.jxust.blog.po.AdminRoleKey" useGeneratedKeys="true" keyProperty="id">
+    insert into admin_role (AdminId, roleId)
+    values (#{adminId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.jxust.blog.po.AdminRoleKey" useGeneratedKeys="true" keyProperty="id">
+    insert into admin_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adminId != null" >
+        adminId,
+      </if>
+      <if test="roleId != null" >
+        roleId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adminId != null" >
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
