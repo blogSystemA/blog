@@ -13,4 +13,9 @@ public class RoleServiceimpl implements RoleService{
 		return null;
 	}
 
+	public List<Role> getRoleByUserID(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

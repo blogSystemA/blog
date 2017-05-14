@@ -8,4 +8,6 @@ public interface RoleService {
 	// 获取admin的角色集合
 	public List<Role> seletAdminRole(Integer adminId);
 
+	public List<Role> getRoleByUserID(Integer id);
+
 }
