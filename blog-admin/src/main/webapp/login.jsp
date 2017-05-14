@@ -8,7 +8,7 @@
 <body>
 
 <h1>user login</h1>  
-<form action="${pageContext.servletContext.contextPath }/login.shtml" method="post">  
+<form action="login" method="post">  
 username:<input type="text" name="username"><p>  
 password:<input type="password" name="password">  
 <p>  

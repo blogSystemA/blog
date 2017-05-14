@@ -15,7 +15,7 @@
      http://www.springframework.org/schema/aop/spring-aop-4.1.xsd"
 	default-lazy-init="true">
 	<tx:annotation-driven />
-	<context:component-scan base-package="cn.jxust.blog" />
+	<context:component-scan base-package="cn.jxust.blog.controller" />
 	<!-- 启动对@AspectJ注解的支持 -->
 	<!--通知spring使用cglib而不是jdk的来生成代理方法 AOP可以拦截到Controller -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
