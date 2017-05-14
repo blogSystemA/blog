@@ -1,9 +1,6 @@
 package cn.jxust.blog.controller;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.StringUtils;
@@ -25,6 +22,7 @@ import cn.jxust.blog.service.ResourceService;
 import cn.jxust.blog.service.RoleService;
 
 @Controller
+@RequestMapping("")
 public class LoginController {
     // 处理用户业务类  
     @Autowired  
@@ -43,6 +41,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String login(HttpServletRequest request) {
+		System.out.println("1111111111111111111111111");
 		request.removeAttribute(ERROR_STR);
 		return LOGIN_STR;
 	}
@@ -51,6 +50,7 @@ public class LoginController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(String username, String password, HttpServletRequest request) {
 		try {
+			System.out.println("1111111111111111111111111");
 			if (!POST.equals(request.getMethod())) {
 				request.setAttribute(ERROR_STR, "支持POST方法提交！");
 			}

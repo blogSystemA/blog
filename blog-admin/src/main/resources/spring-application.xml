@@ -23,6 +23,8 @@
 
     <aop:aspectj-autoproxy/>
     
+    <context:component-scan base-package="cn.jxust.blog"/>
+    
 	<!-- 定时器开关 开始 -->
 	<task:annotation-driven />
 	<!-- 标注类型 的事务配置 如果使用注解事务。就放开 <tx:annotation-driven /> -->
@@ -79,6 +81,7 @@
 	
 	
 	
+	
 	<bean id="multipleDataSource" class="cn.jxust.blog.util.MultipleDataSource">
         <property name="defaultTargetDataSource" ref="adminDataSource"/>
         <property name="targetDataSources">
@@ -88,8 +91,30 @@
         </property>
     </bean>
 
+	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="multipleDataSource" />
+		<property name="mapperLocations" value="classpath*:mapper/*.xml"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		<property name="plugins">
+		    <array>
+		      <bean class="com.github.pagehelper.PageHelper">
+		        <property name="properties">
+		          <value>
+		            dialect=mysql
+		            reasonable=true
+		          </value>
+		        </property>
+		      </bean>
+		    </array>
+	   </property>
+	</bean>
 
-
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.jxust.blog.mapper,cn.jxust.blog.business.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+	
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	 <!-- 对数据源进行事务管理 -->
@@ -101,7 +126,6 @@
     <context:property-placeholder location="classpath:config.properties"/>
     <util:properties id="settings" location="classpath:config.properties"/>
     
- 
 
 	<bean id="jedisTemplate" class="cn.jxust.blog.redis.JedisTemplate">
 		<constructor-arg index="0" ref="sentinelJedisPool" />
